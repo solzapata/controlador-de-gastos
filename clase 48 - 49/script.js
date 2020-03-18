@@ -111,10 +111,10 @@ const removeProperties = (data, props) => {
     const resultado = {}
     for (const key in data) {                         //recorro data con keys que hice variables
         if (!(props.includes(key))) {                 //si props no incluye a esa key la agrego a resultado
-            resultado[key] = data[key]            
+            resultado[key] = data1[key]            
         }
     }
-        
+         
     return resultado
 }
 
@@ -122,30 +122,82 @@ const removeProperties = (data, props) => {
 
 /*Filtrar propiedades
 Crear una función que tome como argumentos un objeto y un array con strings, y devuelva el objeto con solo las propiedades especificadas en el array
-const data = {a: 1, b: 2, c: 3}
-const props = ["c", "b"]
-filterProperties(data, props) // returns {b: 2, c: 3}*/
+const data1 = {a: 1, b: 2, c: 3}
+const props1 = ["c", "b"]
+filterProperties(data1, props1) // returns {b: 2, c: 3}*/
+const data1 = {
+  a: 1, 
+  b: 2, 
+  c: 3
+}
+const props1 = ["c", "b"]
+
+const filterProperties = (data1, props1) => {
+  const resultado = {}
+  for(const key in data1){             //recorrro data y veo si en prop hay una key q este tambien en data
+    if(props1.includes(key)){
+      resultado[key] = data1[key]            
+    }
+  }
+      
+  return resultado
+}
 
 
 
-
-
-/*Comprar productos
-Crear una función que dado un objeto con productos y precios, y la cantidad de dinero disponible, devuelva un objeto con dichos productos, teniendo como valor true si puede comprarlo o false sino
+/*Crear una función que dado un objeto con productos y precios, y la cantidad de dinero disponible, devuelva un objeto con dichos productos, teniendo como valor true si puede comprarlo o false sino
 const products = { cookies: 60, chocolate: 110, soda: 120, }
 const money = 115
 buyProducts(money, products) // returns { cookies: true, chocolate: true, soda: false}*/
+const products = { 
+  cookies: 60, 
+  chocolate: 110, 
+  soda: 120, 
+}
+const money = 115
 
+const buyProducts = (money, products) => {
+  const productsCopy = Object.assign({}, products);    //creo objeto nuevo que replica products
 
+  for(const key in productsCopy){                      //recorro el nuevo objeto
+    if(productsCopy[key] <= money){                    //mientras voy recorriendo el objeto verifico si cada key es menor o igual al dinero que tengo en ese caso cambio el contenido de la key por true sino false
+      productsCopy[key] = true;
+    } else {
+      productsCopy[key] = false;
+    }
+  }
+
+  return productsCopy;
+}
 
 
 
 /*Comprar lista de productos
 Crear una función que dado un objeto con productos y precios, y la cantidad de dinero disponible, true si puede comprarlos a todos o false si no
-const products = { cookies: 60, chocolate: 110, soda: 120, }
-const money = 300
-canBuyAllProduct(money, products) // returns true*/
+const products1 = { cookies: 60, chocolate: 110, soda: 120, }
+const money1 = 300
+canBuyAllProduct(money1, products1) // returns true*/
+const products1 = { 
+  cookies: 60, 
+  chocolate: 110, 
+  soda: 120, 
+}
+const money1 = 300;
 
+const canBuyAllProduct = (products1, money1) => {
+  const productsCopy1 = Object.assign({}, products1);
+  let sumar = 0;
+
+  for(const key in productsCopy1){    //recorro nuevo objeto y voy sumando cada key
+      sumar += productsCopy1[key];    
+  }
+
+  if(sumar <= money1){                //luego verifico si la suma total es menor o igual al dinero
+    return true;
+  } else {
+    return false;
+  }
+}
 
 
 
@@ -179,59 +231,3 @@ getParagraphInfo("Do. Or do not. There is no try.") // returns { LETTERS:  21, W
 /*Contar palabras
 Crear una función que dado un string devuelva un objeto con cada palabra que hay y la cantidad de veces que aparece. La función debe ignorar el caso ("JavaScript" y "javascript" cuentan como una misma palabra) y el objeto devuelto debe tener todas sus propiedades en minúscula
 countWords("El que compra pocas capas pocas capas paga") // returns { el: 1, que: 1, compra: 1, pocas: 2, capas: 2, paga: 1 }*/
-
-
-
-
-
-/*Parámetros de búsqueda
-Los parámetros de búsqueda en una URL son aquellos que vienen después del signo ? y se escriben como parametro=valor, separados por el signo &. Crear una función que dada una URL, devuelva un objeto con cada parámetro como clave con su respectivo valor.
-parseQueryParams("http://www.exercises.com?keyword=objects&language=javascript&level=intermediate") // returns { keyword: "objects", language: "javascript", level: "intermediate }*/
-
-
-
-
-
-/*Ocurrencias en palabra
-Crear una función que dado un string y un array de letras, devuelva un objeto con la cantidad de dichas letras que hay en cada palabra. La función debería tener un parámetro opcional que permite definir si va a ser sensible al caso o no (si "A" y "a" cuentan como dos letras distintas o no)
-findOcurrencies("Hello World", ["o", "l"])
-
-/** returns
-{
-  hello: {
-    o: 1,
-    l: 2
-  },   
-  world: {
-    o: 1,
-    l: 1
-  }
-}
-
-
-
-
-
-/*Batalla
-Crear una función que acepte dos combatientes. Cada combatiente debe tener: nombre, vida, defensa y ataque. Por ronda, se atacan una vez cada uno, usando la siguiente fórmula: daño = ataque - defensaEnemigo y restando a la vida el daño generado. La batalla termina cuando la vida de cualquiera llegue a 0 o menos. Devolver un objeto que indique la cantidad de rondas de duración y quién ganó.
-const fighterA = { name: "Chun-Li", life: 100, attack: 40, defense: 10 }
-const fighterA = { name: "Cammy", life: 50, attack: 20, defense: 20 }
-fight(fighterA, fighterB) // returns { rounds: 3, winner: "Chun-Li"}*/
-
-
-
-
-
-/*Búsqueda laboral
-Crear una función que dada una persona y una búsqueda de empleo, devuelva true si la persona se ajusta a dicha búsqueda. Ambos objetos tienen la siguiente estructura:
-{
-  experience: 1,
-  languages: ["JavaScript", "HTML"],
-  location: ["Buenos Aires"],
-  remuneration: 40000
-}
-La persona es adecuada si:
-tiene igual o más años de experiencia que la búsqueda
-los lenguajes que conoce son los que contiene la búsqueda (puede conocer más, pero no afecta en nada)
-su locación está incluida dentro de las locaciones posibles de la búsqueda
-su remuneración (pretendida) es igual o menor a la de la búsqueda*/
