@@ -207,7 +207,26 @@ Crear una función que dado un objeto que contenga niveles de experiencia y punt
 const score = { EASY: 10, MEDIUM: 50, HARD: 100}
 const challenges = { EASY: 3, MEDIUM: 4, HARD: 2}
 getXP(challenges, score) // returns 630 (3 * 10 + 4 * 50 + 2 * 100)*/
+const score = { 
+  EASY: 10, 
+  MEDIUM: 50, 
+  HARD: 100
+}
+const challenges = { 
+  EASY: 3, 
+  MEDIUM: 4, 
+  HARD: 2
+}
 
+const getXP = (challenges, score) => {
+  const resultado = {};
+
+  for(let key in challenges){
+    resultado[key] = challenges[key] * score[key];
+  }
+
+  return resultado.reduce(sumarNumeros);
+}
 
 
 
@@ -215,19 +234,54 @@ getXP(challenges, score) // returns 630 (3 * 10 + 4 * 50 + 2 * 100)*/
 /*Analizando strings
 Crear una función que dado un string devuelva un objeto con la cantidad de letras, espacios y números que contiene. Cualquier cosa que no sea un número o un espacio cuenta como una letra
 getStringInfo("H3ll0 Wor1d") // returns { LETTERS:  7, DIGITS: 3, SPACES: 1 }*/
+const str = "H3ll0 Wor1d";
 
+const getStringInfo = str => {
+  const newArray = string.split("");           //no puedo hacer object assign porque es un string
+  const newObject = {                       //creo un objeto vacio
+    letters: 0, 
+    digits: 0, 
+    spaces: 0 
+  };
 
+  for(const key of newArray){                //recorro array indice x indice
+    if(key === " "){                       //si hay un espacio sumo uno a spaces
+      newObject.spaces++
+    } else if(!isNaN(Number(key))){        //si es numero 
+      newObject.digits++
+    } else{
+      newObject.letters++
+      }
+    }
+
+  return newObject
+}
 
 
 
 /*Analizando párrafos
 Crear una función que dado un string devuelva un objeto con la cantidad de letras, palabras y oraciones.
 getParagraphInfo("Do. Or do not. There is no try.") // returns { LETTERS:  21, WORDS: 8, SENTENCE: 3 }*/
+const string = "Do. Or do not. There is no try.";
 
+const getParagraphInfo = string => {
+  const chars = string.split("")
+  const words = string.split(" ")
+  const emptyObject = { 
+    letters: 0,
+    words: 0, 
+    sentences: 0 
+  };
 
+  for (const char of chars) {
+    if (char === ".") {
+      emptyObject.sentences++
+    } else if (char !== "." && char !== " " && char !== "," && char !== ";"){
+      emptyObject.letters++
+    }
+  } 
 
+  emptyObject.words = words.length
 
-
-/*Contar palabras
-Crear una función que dado un string devuelva un objeto con cada palabra que hay y la cantidad de veces que aparece. La función debe ignorar el caso ("JavaScript" y "javascript" cuentan como una misma palabra) y el objeto devuelto debe tener todas sus propiedades en minúscula
-countWords("El que compra pocas capas pocas capas paga") // returns { el: 1, que: 1, compra: 1, pocas: 2, capas: 2, paga: 1 }*/
+  return emptyObject;
+}
