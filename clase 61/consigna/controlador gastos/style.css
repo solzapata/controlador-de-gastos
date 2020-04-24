@@ -1,0 +1,59 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.botones{
+    display: flex;
+    justify-content: space-around;
+    margin: 35px;
+    width: 100%;
+}
+
+.btn{
+    height: 50px;
+    width: 185px;
+    border-radius: 30px;
+    background-color: pink;
+    color: white;
+    border: 2px solid hotpink;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.lista{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.textos-ingresados{
+    height: 60vh;
+    width: 70%;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 16px;
+}
+
+.contenedor-parciales{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.parcial{
+    width: 350px;
+    text-align: center;
+}
+
+.monto-total{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

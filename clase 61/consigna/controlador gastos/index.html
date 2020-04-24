@@ -1,0 +1,64 @@
+<!-- Controlador de gastos: hacer un programa que permita agregar ingresos y gastos, el programa debe mostrarlos de forma distinta (con colores que los diferencien) y mostrar el total hasta el momento (suma de ingresos menos suma de gastos). 
+BONUS POINT: permitir ingresar una fecha a la hora de agregar ingreso o gasto, y permitir filtrar por mes/año -->
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Controlador de gastos</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="botones">
+
+        <button class="btn btn-ingreso">Agregar ingreso</button>
+
+        <button class="btn btn-gasto">Agregar gasto</button>
+
+    </div>
+
+    <div class="lista">
+
+        <textarea class="textos-ingresados" name="" id="" cols="30" rows="10"></textarea>
+
+    </div>
+
+    <div class="contenedor-parciales">
+
+        <div class="parcial monto-ingresos">
+
+            <p>Monto total de ingresos:</p>
+
+        </div>
+    
+        <div class="parcial monto-gastos">
+    
+            <p>Monto total de gastos:</p>
+    
+        </div>
+
+    </div>
+
+    <div class="monto-total">
+
+        <p>Monto final:</p>
+
+    </div>
+    
+    <script src="script.js"></script>
+
+</body>
+
+</html>
