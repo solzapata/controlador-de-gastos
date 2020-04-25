@@ -12,16 +12,18 @@ let montoInicialGasto = 0
 let montoInicialTotal = 0
 
 const ingresoAgregado = () => {
-    const mensaje = prompt("Escriba el título del ingreso:")
+    const mensaje = prompt("Escriba el título del ingreso:")        //pedir que ingrese
     const monto = prompt("Escriba el monto del ingreso:")
-    const mensajeFinal = "-" + mensaje + " " + "$" + monto + "\n"
 
-    textosIngresados.value += mensajeFinal
+    const mensajeFinal = document.createElement("p")                //creo un elemento p al que le agrego el msj y lo asigno al div
+    mensajeFinal.innerHTML = `-${mensaje} $${monto}\n`               
+    textosIngresados.appendChild(mensajeFinal)
+    mensajeFinal.style.color = "green"
 
-    montoInicialIngreso += Number(monto)
-    montoIngresos.innerHTML = `<p>Monto total de ingresos: $${montoInicialIngreso}</p>`
+    montoInicialIngreso += Number(monto)                            //sumo todos los ingresos y creo elemento p
+    montoIngresos.innerHTML = `<p class="ingreso">Monto total de ingresos: $${montoInicialIngreso}</p>`
 
-    montoInicialTotal += Number(monto)
+    montoInicialTotal += Number(monto)                              //sumo al total y lo mando a un p
     montoTotal.innerHTML = `<p>Monto final: $${montoInicialTotal}</p>`
 }
 
@@ -30,9 +32,11 @@ btnIngreso.addEventListener("click", ingresoAgregado)
 const gastoAgregado = () => {
     const mensaje = prompt("Escriba el título del gasto:")
     const monto = prompt("Escriba el monto del gasto:")
-    const mensajeFinal = "-" + mensaje + " " + "$" + monto + "\n"
 
-    textosIngresados.value += mensajeFinal
+    const mensajeFinal = document.createElement("p")                
+    mensajeFinal.innerHTML = `-${mensaje} $${monto}\n`               
+    textosIngresados.appendChild(mensajeFinal)
+    mensajeFinal.style.color = "red"
 
     montoInicialGasto += Number(monto)
     montoGastos.innerHTML = `<p>Monto total de gastos: $${montoInicialGasto}</p>`
